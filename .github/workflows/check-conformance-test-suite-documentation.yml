@@ -36,6 +36,8 @@ jobs:
         run: |
           cd $(git rev-parse --show-toplevel)/docs
           ./check-conformance-test-suite-docs.sh
+        env:
+          CONFORMANCE_BASE_URL: ${{ inputs.CONFORMANCE_BASE_URL }}
 
       - name: commit and push if there are changes
         run: |
