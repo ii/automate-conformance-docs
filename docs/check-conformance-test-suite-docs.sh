@@ -3,6 +3,7 @@
 set -o errexit
 set -o nounset
 set -o pipefail
+set -x
 
 cd "$(realpath "$(dirname "$0")")" && cd "$(git rev-parse --show-toplevel)"
 GITHUB_WORKSPACE="${GITHUB_WORKSPACE:-$PWD}"
@@ -51,7 +52,7 @@ function install_go() {
     curl -L https://dl.google.com/go/go"${GO_VERSION}".linux-amd64.tar.gz \
       | sudo tar --directory /usr/local --extract --ungzip
   fi
-  export PATH="$PATH:/usr/local/go/bin"
+  export PATH="/usr/local/go/bin:$PATH"
   go version
 }
 
