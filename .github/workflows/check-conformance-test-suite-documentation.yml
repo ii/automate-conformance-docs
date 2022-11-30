@@ -1,7 +1,16 @@
 name: check-conformance-test-suite-documentation
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      CONFORMANCE_BASE_URL:
+        description: 'CONFORMANCE_BASE_URL'
+        required: true
+        default: 'https://raw.githubusercontent.com/cncf/k8s-conformance/master/docs'
+        type: choice
+        options:
+        - 'https://raw.githubusercontent.com/cncf/k8s-conformance/master/docs'
+        - 'https://raw.githubusercontent.com/ii/automate-conformance-docs/master/docs'
   schedule:
     - cron: "0 12 * * *"
 
